@@ -1,4 +1,19 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'service'
 include 'api'
 include 'db'
+
+
+
 
