@@ -25,20 +25,25 @@ public class TokenBusiness {
      * 3. converter -> token response로 변경
      */
 
-    public TokenResponse issueToken(UserEntity userEntity){
+    public TokenResponse issueToken(UserEntity userEntity) {
 
 
         return Optional.ofNullable(userEntity)
-                .map(ue->{
+                .map(ue -> {
 
                     return ue.getId();
                 })
-                .map(userId->{
-                    var accessToken=tokenService.issueAccessToken(userId);
-                    var refreshToken=tokenService.issueRefreshToken(userId);
-                    return tokenConverter.toResponse(accessToken,refreshToken);
+                .map(userId -> {
+                    var accessToken = tokenService.issueAccessToken(userId);
+                    var refreshToken = tokenService.issueRefreshToken(userId);
+                    return tokenConverter.toResponse(accessToken, refreshToken);
                 })
-                .orElseThrow(()->new ApiException(ErrorCode.NULL_POINT));
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
+
+    public Long validationAccessToken(String accessToken){
+        var userId = tokenService.validationToken(accessToken);
+        return userId;
 
     }
 }
