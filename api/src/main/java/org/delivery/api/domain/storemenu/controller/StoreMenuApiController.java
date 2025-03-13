@@ -22,8 +22,7 @@ public class StoreMenuApiController {
     public Api<List<StoreMenuResponse>> search(
         @RequestParam Long storeId
     ){
-        var response=storeMenuBusiness.search(storeId);
+        var response = storeMenuBusiness.search(storeId);
         return Api.OK(response);
     }
-
 }

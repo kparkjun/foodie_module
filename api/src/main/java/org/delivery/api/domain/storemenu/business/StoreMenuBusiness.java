@@ -15,30 +15,29 @@ import java.util.stream.Collectors;
 public class StoreMenuBusiness {
 
     private final StoreMenuService storeMenuService;
-
     private final StoreMenuConverter storeMenuConverter;
 
+
     public StoreMenuResponse register(
-            StoreMenuRegisterRequest request
+        StoreMenuRegisterRequest request
     ){
-        // req -> entity -> save ->response
-        var entity=storeMenuConverter.toEntity(request);
-        var newEntity=storeMenuService.register(entity);
-        var response=storeMenuConverter.toResponse(newEntity);
+        // req -> entity -> save -> response
+        var entity = storeMenuConverter.toEntity(request);
+        var newEntity = storeMenuService.register(entity);
+        var response = storeMenuConverter.toResponse(newEntity);
         return response;
     }
 
     public List<StoreMenuResponse> search(
-            Long storeId
+        Long storeId
     ){
-        var list=storeMenuService.getStoreMenuByStoreId(storeId);
+        var list = storeMenuService.getStoreMenuByStoreId(storeId);
 
         return list.stream()
-                .map(it->{
-                    return storeMenuConverter.toResponse(it);
-                })
-                //.map(storeMenuConverter::toResponse)
-                .collect(Collectors.toList());
+            .map(it ->{
+                return storeMenuConverter.toResponse(it);
+            })
+            //.map(storeMenuConverter::toResponse)
+            .collect(Collectors.toList());
     }
-
 }

@@ -1,11 +1,11 @@
 package org.delivery.api.domain.storemenu.controller.model;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
@@ -24,4 +24,5 @@ public class StoreMenuRegisterRequest {
 
     @NotBlank
     private String thumbnailUrl;
+
 }
